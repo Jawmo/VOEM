@@ -26,14 +26,14 @@ class Character():
 		print("{}.".format(self.in_room["desc"]))
 		print("Exits: {}".format(", ".join(self.in_room["exits"])))
 
-	def navigate(self, hotkey):
-		if self.direction == "north":
-			hero.in_room = 
-		elif self.direction == "east":
-		elif self.direction == "south":
-		elif self.direction == "west":
-		else:
-			print("You don't see a way {}.")
+	# def navigate(self, hotkey):
+	# 	if self.direction == "north":
+	# 		hero.in_room = 
+	# 	elif self.direction == "east":
+	# 	elif self.direction == "south":
+	# 	elif self.direction == "west":
+	# 	else:
+	# 		print("You don't see a way {}.")
 
 	def flee(self):
 		pas

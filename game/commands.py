@@ -5,7 +5,7 @@ def available_commands(self):
 	moves = []
 	moves.append(ViewInventory())
 	moves.append(LookRoom())
-	moves.append(NavigateNorth())
+	# moves.append(NavigateNorth())
 	return moves
 
 class Command():
@@ -30,12 +30,12 @@ class LookRoom(Command):
 						 name="Look",
 						 hotkey="l")
 
-class NavigateNorth(Command):
-	def __init__(self):
-		self.direction = "north"
-		super().__init__(method=Character.navigate,
-						 name="Move north.",
-						 hotkey=["n", "north"])
+# class NavigateNorth(Command):
+# 	def __init__(self):
+# 		self.direction = "north"
+# 		super().__init__(method=Character.navigate,
+# 						 name="Move north.",
+# 						 hotkey=["n", "north"])
 
 # class NavigateEast(Command):
 # 	def __init__(self):
