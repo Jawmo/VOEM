@@ -16,8 +16,8 @@ class Room():
 compass = ["n", "e", "s", "w", "north", "east", "south", "west"]
 
 rooms = {
-	1: {"name"  :  "The Void", 
-		"desc"  :  "This is the first room. You see nothing. No floor, no walls, just blackness.", 
+	1: {"name"  :  "Escape Pod", 
+		"desc"  :  "The egg-shaped pod houses just enough room for you to stand up and stretch your legs. A computer panel gently beeps nearby.", 
 		"exits" :  {"north": 2, "east": 3},
 		"items" :  ["9mm pistol", "apple"]},
 	2: {"name"  :  "Second Room", 

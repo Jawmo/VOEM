@@ -9,15 +9,15 @@ def play():
 	print("\nWelcome to the game. Be ready.")
 	print("\nWhat is your name, hero?")
 	hero = input(prompt).lower()
-	hero = Character("human", hero, 100, [Credits(500)], rooms[1], "normal")
+	hero = Player(hero, [Credits(200)], rooms[1])
 
 	print("Welcome, {}.\n".format(hero.name))
 	Character.look_room(hero)
 
 	all_commands = available_commands(hero)
+	print("Current Moves: \n")
 	for action in all_commands:
-		print("Current Moves: \n")
-		print(action.name + ": " + action.hotkey + "\n")
+		print(action.name + ": " + action.hotkey)
 
 	while hero.is_alive():	
 		action_input = input(prompt).lower()
@@ -25,7 +25,6 @@ def play():
 			if action_input == action.hotkey:
 				Character.do_action(hero, action, **action.kwargs)
 				break
-	        # Check again since the room could have changed the player's state
 		print("")
 
 if __name__ == "__main__":

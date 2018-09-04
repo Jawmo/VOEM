@@ -5,7 +5,10 @@ def available_commands(self):
 	moves = []
 	moves.append(ViewInventory())
 	moves.append(LookRoom())
-	# moves.append(NavigateNorth())
+	moves.append(NavNorth())
+	moves.append(NavEast())
+	moves.append(NavSouth())
+	moves.append(NavWest())
 	return moves
 
 class Command():
@@ -30,27 +33,30 @@ class LookRoom(Command):
 						 name="Look",
 						 hotkey="l")
 
-# class NavigateNorth(Command):
-# 	def __init__(self):
-# 		self.direction = "north"
-# 		super().__init__(method=Character.navigate,
-# 						 name="Move north.",
-# 						 hotkey=["n", "north"])
+### room to room navigation
 
-# class NavigateEast(Command):
-# 	def __init__(self):
-# 		self.direction = "e"
-# 		super().__init__(method=Character.nav_east, name="Move east.", hotkey="e", "east")
+class NavNorth(Command):
+	def __init__(self):
+		super().__init__(method=Character.nav_north,
+						 name="Navigate north",
+						 hotkey="n")
 
-# class NavigateSouth(Command):
-# 	def __init__(self):
-# 		self.direction = "s"
-# 		super().__init__(method=Character.nav_south, name="Move south.", hotkey="s", "south")
+class NavEast(Command):
+	def __init__(self):
+		super().__init__(method=Character.nav_east,
+						 name="Navigate east",
+						 hotkey="e")
+class NavSouth(Command):
+	def __init__(self):
+		super().__init__(method=Character.nav_south,
+						 name="Navigate south",
+						 hotkey="s")
 
-# class NavigateWest(Command):
-# 	def __init__(self):
-# 		self.direction = "w"
-# 		super().__init__(method=Character.nav_west, name="Move west.", hotkey="w", "west")
+class NavWest(Command):
+	def __init__(self):
+		super().__init__(method=Character.nav_west,
+						 name="Navigate west",
+						 hotkey="w")
 
 # verbs_action = {
 # 	1: {"name"  :  "look",

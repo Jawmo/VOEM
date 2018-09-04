@@ -1,13 +1,13 @@
 import items
+from rooms import *
 
 class Character():
-	def __init__(self, char_type, name, hp, inventory, in_room, temper):
-		self.char_type = char_type
+	def __init__(self, name, hp, level, inventory, in_room):
 		self.name = name
 		self.hp = hp
+		self.level = level
 		self.inventory = inventory
 		self.in_room = in_room
-		self.temper = temper
 
 	def is_alive(self):
 		return self.hp > 0
@@ -23,17 +23,45 @@ class Character():
 
 	def look_room(self):
 		print("{}".format(self.in_room["name"]))
-		print("{}.".format(self.in_room["desc"]))
+		print("{}".format(self.in_room["desc"]))
 		print("Exits: {}".format(", ".join(self.in_room["exits"])))
 
-	# def navigate(self, hotkey):
-	# 	if self.direction == "north":
-	# 		hero.in_room = 
-	# 	elif self.direction == "east":
-	# 	elif self.direction == "south":
-	# 	elif self.direction == "west":
-	# 	else:
-	# 		print("You don't see a way {}.")
+	def nav_north(self):
+		direction = "north"
+		if direction in self.in_room["exits"]:
+			self.in_room = rooms[self.in_room["exits"][direction]]
+			Character.look_room(self)
+		else:
+			print (f"You can't go {direction}.")
 
-	def flee(self):
-		pas
+	def nav_east(self):
+		direction = "east"
+		if direction in self.in_room["exits"]:
+			self.in_room = rooms[self.in_room["exits"][direction]]
+			Character.look_room(self)
+		else:
+			print (f"You can't go {direction}.")
+
+	def nav_south(self):
+		direction = "south"
+		if direction in self.in_room["exits"]:
+			self.in_room = rooms[self.in_room["exits"][direction]]
+			Character.look_room(self)
+		else:
+			print (f"You can't go {direction}.")
+
+	def nav_west(self):
+		direction = "west"
+		if direction in self.in_room["exits"]:
+			self.in_room = rooms[self.in_room["exits"][direction]]
+			Character.look_room(self)
+		else:
+			print (f"You can't go {direction}.")
+
+class Player(Character):
+
+	def __init__(self, name, inventory, in_room):
+		super().__init__(name, 100, 1, inventory, in_room)
+
+class NPC(Character):
+	pass
