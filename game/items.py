@@ -9,13 +9,22 @@
 # }
 
 class Item():
-	def __init__(self, name, description, value):
-		self.name = name
-		self.description = description
-		self.value = value
+    def __init__(self, name, description, value):
+        self.name = name
+        self.description = description
+        self.value = value
 
-	def __str__(self):
-		return "{}\nValue: {}\nDescription: {}".format(self.name, self.description, self.value)
+    def __str__(self):
+        return "{}\nValue: {}\nDescription: {}".format(self.name, self.description, self.value)
+
+    def a_an(self):
+
+        if self[0] in ["a", "e", "i", "o", "u", "8"]:
+            self = "an " + self
+        else:
+            self = "a " + self
+        
+        return self
 
 class Credits(Item):
 	def __init__(self, amt):
@@ -40,9 +49,9 @@ class Rock(Weapon):
                          value=0,
                          damage=5)
 
-class Dagger(Weapon):
+class Pistol(Weapon):
     def __init__(self):
-        super().__init__(name="Dagger",
-                         description="A small dagger with some rust. Somewhat more dangerous than a rock.",
+        super().__init__(name="Pistol",
+                         description="It's a gun.",
                          value=10,
-                         damage=10)
+                         damage=50)

@@ -23,7 +23,7 @@ class Character():
 
 	def look_room(self):
 		print("{}".format(self.in_room["name"]))
-		print("{}".format(self.in_room["desc"]))
+		print("{} You also see {}".format(self.in_room["desc"], ", ".join(Room.items_in_room(self.in_room["items"]))))
 		print("Exits: {}".format(", ".join(self.in_room["exits"])))
 
 	def nav_north(self):

@@ -13,13 +13,28 @@ class Room():
 	def __repr__(self):
 		return("{}\n{}\nExits: {}\n").format(self.title, self.description, self.exits)
 
+	def items_in_room(self):
+		
+		contents = self
+		converted_contents = []
+		for i in contents:
+			if len(contents) == 1:
+				i = Item.a_an(i)
+			elif i in contents[-1]:
+				i = "and " + Item.a_an(i)
+			else:
+				i = Item.a_an(i)
+			converted_contents.append(i)
+
+		return converted_contents
+
 compass = ["n", "e", "s", "w", "north", "east", "south", "west"]
 
 rooms = {
 	1: {"name"  :  "Escape Pod", 
-		"desc"  :  "The egg-shaped pod houses just enough room for you to stand up and stretch your legs. A computer panel gently beeps nearby.", 
+		"desc"  :  "The egg-shaped pod houses just enough room for you to stand up and stretch your legs. A computer panel intermittently beeps nearby.", 
 		"exits" :  {"north": 2, "east": 3},
-		"items" :  ["9mm pistol", "apple"]},
+		"items" :  [Pistol().name, Pistol().name]},
 	2: {"name"  :  "Second Room", 
 	    "desc"  :  "This is the second room.", 
 	    "exits" :  {"south": 1, "east": 4},
