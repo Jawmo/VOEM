@@ -1,31 +1,42 @@
-from items import *
 from character import *
 from commands import *
 from rooms import *
- 
+from items import *
+
+### begin game
 prompt = "> "
- 
+
 def play():
+
 	print("\nWelcome to the game. Be ready.")
 	print("\nWhat is your name, hero?")
 	hero = input(prompt).lower()
-	hero = Character(hero, "human", genes, 100, 1, [], rooms[1])
+	hero = Character("human", hero, [], 100, 1, [items[1]["name"]], rooms[1])
+	Room.room_description(hero)
+	print("")
+	print("Type 'help' to see the current command list.")
 
-	print("Welcome, {}.\n".format(hero.name))
-	Character.look_room(hero)
+	end = False
+	while not end:
 
-	# all_commands = available_commands(hero)
-	# print("Current Moves: \n")
-	# for action in all_commands:
-	# 	print(action.name + ": " + action.hotkey)
-
-	while hero.is_alive():	
-		action_input = input(prompt).lower()
-		for command in all_commands:
-			if action_input == action.hotkey:
-				all_commmands["function"]
-		
 		print("")
+		command_input = input(prompt).lower()
+		if len(command_input.split()) > 1:
+			second_input = command_input.split()[1]
+			command_input = command_input.split()[0]
+
+		for i in all_commands:
+			if command_input in all_commands[i]["hotkey"]:
+				if all_commands[i]["need_com_name"] == "yes":
+					all_commands[i]["function"](hero, all_commands[i]["command_name"])
+				elif all_commands[i]["need_com_input"] == "yes":
+					all_commands[i]["function"](hero, command_input, second_input)
+				else:
+					all_commands[i]["function"](hero)
+				break
+		
+		# print(f"\nUnknown command: \"{command_input}\" ")
+
 
 if __name__ == "__main__":
 	play()

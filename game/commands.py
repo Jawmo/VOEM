@@ -1,79 +1,68 @@
-import items
+from rooms import *
 from character import *
 
-def available_commands(self):
-	moves = []
-	moves.append(ViewInventory())
-	moves.append(LookRoom())
-	moves.append(NavNorth())
-	moves.append(NavEast())
-	moves.append(NavSouth())
-	moves.append(NavWest())
-	return moves
+def do_this(self):
+	print("It works!")
 
-class Command():
-	def __init__(self, method, hotkey, name, **kwargs):
-		self. method = method
-		self.hotkey = hotkey
-		self.name = name
-		self.kwargs = kwargs
-
-	def __str(self):
-		return "{}: {}".format(self.hotkey, self.name)
-
-class ViewInventory(Command):
-	def __init__(self):
-		super().__init__(method=Character.view_inventory,
-						 name="View Inventory",
-						 hotkey="i")
-
-class LookRoom(Command):
-	def __init__(self):
-		super().__init__(method=Character.look_room,
-						 name="Look",
-						 hotkey="l")
-
-### room to room navigation
-
-class NavNorth(Command):
-	def __init__(self):
-		super().__init__(method=Character.nav_north,
-						 name="Navigate north",
-						 hotkey="n")
-
-class NavEast(Command):
-	def __init__(self):
-		super().__init__(method=Character.nav_east,
-						 name="Navigate east",
-						 hotkey="e")
-class NavSouth(Command):
-	def __init__(self):
-		super().__init__(method=Character.nav_south,
-						 name="Navigate south",
-						 hotkey="s")
-
-class NavWest(Command):
-	def __init__(self):
-		super().__init__(method=Character.nav_west,
-						 name="Navigate west",
-						 hotkey="w")
-
-# verbs_action = {
-# 	1: {"name"  :  "look",
-# 	    "func"  :  "look",
-# 	    "desc"  :  "Displays your location information."},
-# 	2: {"name"  :  "get",
-# 	    "func"  :  "get_item",
-# 	    "desc"  :  "Picks up an item."},
-# }
-
-		# for i in verbs_action:
-		# 	if command in verbs_action[i]['name']:
-		# 		return verbs_action[i]['func']
+def show_all_commands(self):
+	for i in all_commands:
+		print("Command:", all_commands[i]["hotkey"])
+		print("  Description:", all_commands[i]["description"])
 		
-		# print(verbs_action[i]['func'])
 
-# def get_item(self, item):
-# 	name = "get"
-# 	func = Inventory.add_to_inventory(item)
-# 	desc = "Picks up an item."
+all_commands = {
+	1: 	{"command_name"		: 	"look",
+		 "need_com_name"	:  	"no",
+		 "need_com_input"	:  	"no",
+	 	 "description"		: 	"Display the room information.",
+	 	 "hotkey"			: 	"l",
+	 	 "function"			: 	Room.room_description},
+	2: 	{"command_name"		: 	"view inventory",
+		 "need_com_name"	:  	"no",
+		 "need_com_input"	:  	"no",
+	 	 "description"		:	"view your inventory.",
+	 	 "hotkey"			: 	"i",
+	 	 "function"			: 	Character.display_inventory},
+	3: 	{"command_name"		: 	"north",
+	 	 "need_com_name"	:  	"yes",
+	 	 "need_com_input"	:  	"no",
+	 	 "description"		: 	"Travel north.",
+	 	 "hotkey"			: 	"n",
+	 	 "function"			: 	Character.navigate},
+	4: 	{"command_name"		: 	"east",
+	 	 "need_com_name"	:  	"yes",
+	 	 "need_com_input"	:  	"no",
+	 	 "description"		: 	"Travel east.",
+	 	 "hotkey"			: 	"e",
+	 	 "function"			: 	Character.navigate},
+	5: 	{"command_name"		: 	"south",
+	 	 "need_com_name"	:  	"yes",
+	 	 "need_com_input"	:  	"no",
+	 	 "description"		: 	"Travel south.",
+	 	 "hotkey"			: 	"s",
+	 	 "function"			: 	Character.navigate},
+	6: 	{"command_name"		: 	"west",
+	 	 "need_com_name"	:  	"yes",
+	 	 "need_com_input"	:  	"no",
+	 	 "description"		: 	"Travel west.",
+	 	 "hotkey"			: 	"w",
+	 	 "function"			: 	Character.navigate},
+	7: 	{"command_name"		: 	"get",
+	 	 "need_com_name"	:  	"no",
+	 	 "need_com_input"	:  	"yes",
+	 	 "description"		: 	"Get an object.",
+	 	 "hotkey"			: 	"get",
+	 	 "function"			: 	Character.add_to_inventory},
+	8: 	{"command_name"		: 	"drop",
+	 	 "need_com_name"	:  	"no",
+	 	 "need_com_input"	:  	"yes",
+	 	 "description"		: 	"Drop an object.",
+	 	 "hotkey"			: 	"drop",
+	 	 "function"			: 	Character.remove_from_inventory},
+	9: 	{"command_name"		: 	"help",
+	 	 "need_com_name"	:  	"no",
+	 	 "need_com_input"	:  	"no",
+	 	 "description"		: 	"Display the the commands.",
+	 	 "hotkey"			: 	["h", "help"],
+	 	 "function"			: 	show_all_commands},
+}

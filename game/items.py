@@ -1,57 +1,38 @@
-# items = {
-# 	1: {"name"			: "9mm pistol",
-# 		"desc"			: "Looks like a 9mm pistol.",
-# 		"mat_type" 		: "steel",
-# 		"item_category" : "sidearm",
-# 		"durability"	: "strong",
-# 		"weight" 		: "5",
-# 		"value"		 	: "500"},
-# }
+from language import *
 
 class Item():
-    def __init__(self, name, description, value):
-        self.name = name
-        self.description = description
-        self.value = value
-
-    def __str__(self):
-        return "{}\nValue: {}\nDescription: {}".format(self.name, self.description, self.value)
-
-    def a_an(self):
-
-        if self[0] in ["a", "e", "i", "o", "u", "8"]:
-            self = "an " + self
-        else:
-            self = "a " + self
-        
-        return self
-
-class Credits(Item):
-	def __init__(self, amt):
-		self.amt  = amt
-		super().__init__(name="Credits",
-						 description="A card with your credits. The only way to pay.",
-						 value=self.amt)
+	def __init__(self, name, item_type, description,
+				 attributes, value, weight):
+		self.name = name
+		self.item_type = item_type
+		self.description = description
+		self.attributes = attributes
+		self.value = value
+		self.weight = weight
 
 class Weapon(Item):
-    def __init__(self, name, description, value, damage):
-        self.damage = damage
-        super().__init__(name, description, value)
- 
-    def __str__(self):
-        return "{}\n=====\n{}\nValue: {}\nDamage: {}".format(self.name, self.description, self.value, self.damage)
- 
- 
-class Rock(Weapon):
-    def __init__(self):
-        super().__init__(name="Rock",
-                         description="A fist-sized rock, suitable for bludgeoning.",
-                         value=0,
-                         damage=5)
 
-class Pistol(Weapon):
-    def __init__(self):
-        super().__init__(name="Pistol",
-                         description="It's a gun.",
-                         value=10,
-                         damage=50)
+	def __init__(self, weapon_range, weapon_type, ammo_type, damage):
+		self.weapon_range = weapon_range
+		self.weapon_type = weapon_type
+		self.ammo_type = ammo_type
+		self.damage = damage
+		
+		super.__init__(item_type="weapon")
+
+class Sidearm(Weapon):
+
+	def __init__(self):
+		super.__init__(weapon_range = "far",
+					   weapon_type="sidearm",
+					   ammo_type="9mm",
+					   damage=50)
+
+items = {
+	1: {"name"  		:	"9mm pistol", 
+		"class"			:	Sidearm,
+		"description" 	:	"It's a gun.",
+		"attributes" 	:	[],
+		"value"			:	5000,
+		"weight"		:	5}
+}
