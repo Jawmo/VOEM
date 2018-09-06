@@ -22,14 +22,21 @@ class Weapon(Item):
 
 class Sidearm(Weapon):
 
-	def __init__(self):
+	def __init__(self, ammo_type):
+		self. ammo_type = ammo_type
+
 		super.__init__(weapon_range = "far",
 					   weapon_type="sidearm",
 					   ammo_type="9mm",
 					   damage=50)
 
+class Pistol9mm(Weapon):
+
+	def __init__(self):
+		super.__init__(ammo_type = "9mm")
+
 items = {
-	1: {"name"  		:	"9mm pistol", 
+	1: {"name"  		:	"pistol", 
 		"class"			:	Sidearm,
 		"description" 	:	"It's a gun.",
 		"attributes" 	:	[],

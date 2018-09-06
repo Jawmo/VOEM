@@ -1,5 +1,6 @@
 from rooms import *
 from character import *
+from items import *
 
 def do_this(self):
 	print("It works!")
@@ -7,20 +8,40 @@ def do_this(self):
 def show_all_commands(self):
 	for i in all_commands:
 		print("Command:", all_commands[i]["hotkey"])
-		print("  Description:", all_commands[i]["description"])
-		
+		print("  ", all_commands[i]["description"])
+
+def object_description(self, command_input, second_input):
+	if second_input == "":
+		Room.room_description(self)
+	else:
+		if second_input in self.current_room["items"]:
+			for i in items:
+				if second_input in items[i]["name"]:
+					print("{}".format(items[i]["description"]))
+					break
+				else:
+					print("There's nothing special about it.")
+		elif second_input in self.inventory:
+			for i in items:
+				if second_input in items[i]["name"]:
+					print("{}".format(items[i]["description"]))
+					break
+				else:
+					print("There's nothing special about it.")
+		else:
+			print("You don't see that here.")
 
 all_commands = {
 	1: 	{"command_name"		: 	"look",
 		 "need_com_name"	:  	"no",
-		 "need_com_input"	:  	"no",
-	 	 "description"		: 	"Display the room information.",
+		 "need_com_input"	:  	"yes",
+	 	 "description"		: 	"Display room or object information. 'L' or 'L object'.",
 	 	 "hotkey"			: 	"l",
-	 	 "function"			: 	Room.room_description},
+	 	 "function"			: 	object_description},
 	2: 	{"command_name"		: 	"view inventory",
 		 "need_com_name"	:  	"no",
 		 "need_com_input"	:  	"no",
-	 	 "description"		:	"view your inventory.",
+	 	 "description"		:	"View your inventory.",
 	 	 "hotkey"			: 	"i",
 	 	 "function"			: 	Character.display_inventory},
 	3: 	{"command_name"		: 	"north",

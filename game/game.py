@@ -11,7 +11,7 @@ def play():
 	print("\nWelcome to the game. Be ready.")
 	print("\nWhat is your name, hero?")
 	hero = input(prompt).lower()
-	hero = Character("human", hero, [], 100, 1, [items[1]["name"]], rooms[1])
+	hero = Character("human", hero, [], 100, 1, [], rooms[1])
 	Room.room_description(hero)
 	print("")
 	print("Type 'help' to see the current command list.")
@@ -21,6 +21,7 @@ def play():
 
 		print("")
 		command_input = input(prompt).lower()
+		second_input = ""
 		if len(command_input.split()) > 1:
 			second_input = command_input.split()[1]
 			command_input = command_input.split()[0]
