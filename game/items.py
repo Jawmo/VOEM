@@ -38,12 +38,14 @@ class Ammo(Item):
 	def __init__(self, description, ammo_type, current_ammo, max_ammo):
 		self.description = description
 		self.ammo_type = ammo_type
-		self.current_ammo = 10
-		self.max_ammo = 10
+		self.current_ammo = current_ammo
+		self.max_ammo = max_ammo
 
 class Ammo9mm(Ammo):
 	def __init__(self):
-		super.__init__(description="It's a standard 9mm magazine.", ammo_type="9mm")
+		super.__init__(description="It's a standard 9mm magazine.",
+					   ammo_type="9mm",
+					   max_ammo=10)
 
 
 items = {
@@ -56,7 +58,7 @@ items = {
 		"weight"		:	5},
 	2: {"name"  		:	"magazine", 
 		"class"			:	Ammo9mm,
-		"description" 	:	"It looks like a 9mm magazine.",
+		"description" 	:	"Looks like a 9mm magazine.",
 		"attributes" 	:	[],
 		"value"			:	5000,
 		"weight"		:	5,

@@ -14,19 +14,23 @@ def object_description(self, command_input, second_input):
 	if second_input == "":
 		Room.room_description(self)
 	else:
+
 		if second_input in self.current_room["items"]:
 			for i in items:
 				if second_input in items[i]["name"]:
-					print("You look at the {} on the floor. {}".format(items[i]["name"], items[i]["description"]))
+					print("You look at the {} on the floor. {}".format(items[i]["name"],
+																	   items[i]["description"]))
 					break
-					
-		elif second_input in self.inventory:
-			for i in items:
-				if second_input in items[i]["name"]:
-					print("You look at the {} in your hand. {}".format(items[i]["name"], items[i]["description"]))
-					break
+
 		else:
-			print("You don't see that here.")
+			for i in self.inventory:
+				if second_input in self.inventory[i]["contents"]:
+					print("You look at {} {} {}.".format(", ".join(converted_contents(self.inventory[i]["contents"])),
+																		 			  self.inventory[i]["display"],
+																		 			  self.inventory[i]["name"]), end=" ")
+					for j in items:
+						if [items[j]["name"]] == self.inventory[i]["contents"]:
+							print(items[j]["description"])
 
 all_commands = {
 	1: 	{"command_name"		: 	"look",

@@ -100,32 +100,7 @@ class Character():
 																	 self.inventory[item]["name"]), end="")
 				print(".", end=" ")
 
-		# final_inv = []
-		# for i in self.inventory:
-		# 	if self.inventory[i]["contents"] == []:
-		# 		pass
-		# 	else:
-		# 		final_inv.append(self.inventory[i]["contents"])
-
-		# print(final_inv)
-		# print("{}".format(", ".join(final_inv)))
-
-		# final_inv = {}
-		# for item in self.inventory:
-		# 	for sub_item in self.inventory[item]["contents"]:
-		# 		if sub_item == []:
-		# 			pass
-		# 		else:	
-		# 			final_inv['name'] = sub_item
-		
-		# if final_inv == {}:
-		# 	print(f"You don't have anything, {self.name}.")
-		# else:
-		# 	print(final_inv)
-		# 	print("You have {}.".format(", ".join(converted_contents(final_inv))))
-
 	def navigate(self, command_name):
-		print(command_name)
 		if command_name in self.current_room["exits"]:
 			self.current_room = rooms[self.current_room["exits"][command_name]]
 			Room.room_description(self)

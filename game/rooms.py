@@ -17,6 +17,9 @@ class Room():
 			print("")
 		print("Exits: {}".format(", ".join(self.current_room["exits"])))
 
+		# print(Ammo.description)
+		# print(Ammo9mm)
+
 
 compass = ["n", "e", "s", "w", "north", "east", "south", "west"]
 
