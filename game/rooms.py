@@ -10,7 +10,11 @@ class Room():
 
 	def room_description(self):
 		print(self.current_room["name"])
-		print("{} You also see {}.".format(self.current_room["desc"], ", ".join(converted_contents(self.current_room["items"]))))
+		print("{}".format(self.current_room["desc"]), end=" ")
+		if any(self.current_room["items"]):
+			print("You also see {}.".format(", ".join(converted_contents(self.current_room["items"]))))
+		else:
+			print("")
 		print("Exits: {}".format(", ".join(self.current_room["exits"])))
 
 
@@ -20,17 +24,17 @@ rooms = {
 	1: {"name"  :  "Escape Pod", 
 		"desc"  :  "The egg-shaped pod houses just enough room for you to stand up and stretch your legs. A computer panel intermittently beeps nearby.", 
 		"exits" :  {"north": 2, "east": 3},
-		"items" :  [items[1]["name"], "bird"]},
+		"items" :  [items[1]["name"], items[2]["name"], items[2]["name"]]},
 	2: {"name"  :  "Second Room", 
 	    "desc"  :  "This is the second room.", 
 	    "exits" :  {"south": 1, "east": 4},
-	    "items" :  ""},
+	    "items" :  []},
 	3: {"name"  :  "Third Room", 
 	    "desc"  :  "This is the third room.", 
 	    "exits" :  {"west": 1},
-	    "items" :  ""},
+	    "items" :  []},
 	4: {"name"  :  "Fourth Room", 
 	    "desc"  :  "This is the fourth room.", 
 	    "exits" :  {"west": 2},
-	    "items" :  ""},
+	    "items" :  []},
 }

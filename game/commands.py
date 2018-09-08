@@ -17,17 +17,14 @@ def object_description(self, command_input, second_input):
 		if second_input in self.current_room["items"]:
 			for i in items:
 				if second_input in items[i]["name"]:
-					print("{}".format(items[i]["description"]))
+					print("You look at the {} on the floor. {}".format(items[i]["name"], items[i]["description"]))
 					break
-				else:
-					print("There's nothing special about it.")
+					
 		elif second_input in self.inventory:
 			for i in items:
 				if second_input in items[i]["name"]:
-					print("{}".format(items[i]["description"]))
+					print("You look at the {} in your hand. {}".format(items[i]["name"], items[i]["description"]))
 					break
-				else:
-					print("There's nothing special about it.")
 		else:
 			print("You don't see that here.")
 
@@ -86,4 +83,10 @@ all_commands = {
 	 	 "description"		: 	"Display the the commands.",
 	 	 "hotkey"			: 	["h", "help"],
 	 	 "function"			: 	show_all_commands},
+	10:	{"command_name"		: 	"load",
+	 	 "need_com_name"	:  	"no",
+	 	 "need_com_input"	:  	"yes",
+	 	 "description"		: 	"Insert the appropriate ammo or object for this item.",
+	 	 "hotkey"			: 	"load",
+	 	 "function"			: 	Weapon.load_weapon},
 }
