@@ -11,7 +11,7 @@ def play():
 	print("\nWelcome to the game. Be ready.")
 	print("\nWhat is your name, hero?")
 	hero = input(prompt).lower()
-	hero = Character("human", hero, [], 100, 1, [], rooms[1])
+	hero = Character("human", hero, [], 100, 0, {}, rooms[1])
 	Room.room_description(hero)
 	print("")
 	print("Type 'help' to see the current command list.")
