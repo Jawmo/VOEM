@@ -9,3 +9,5 @@ The goal of this project is to create a MUD (Multi-User Dungeon) with the use of
   - Channels 2.0+
   
 A MUD is a massively multiplyer adventure games that is text-only, with no graphics involved.
+
+Come chat more with us at https://slack.mudcoders.com/
