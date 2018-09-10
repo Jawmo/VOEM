@@ -9,6 +9,7 @@ def show_all_commands(self):
 	for i in all_commands:
 		print("Command:", all_commands[i]["hotkey"])
 		print("  ", all_commands[i]["description"])
+		print("")
 
 def object_description(self, command_input, second_input):
 	if second_input == "":
@@ -69,28 +70,40 @@ all_commands = {
 	 	 "description"		: 	"Travel west.",
 	 	 "hotkey"			: 	"w",
 	 	 "function"			: 	Character.navigate},
-	7: 	{"command_name"		: 	"get",
+	7: 	{"command_name"		: 	"out",
+	 	 "need_com_name"	:  	"yes",
+	 	 "need_com_input"	:  	"no",
+	 	 "description"		: 	"Travel out of an object.",
+	 	 "hotkey"			: 	"o",
+	 	 "function"			: 	Character.navigate},
+	8: 	{"command_name"		: 	"get",
 	 	 "need_com_name"	:  	"no",
 	 	 "need_com_input"	:  	"yes",
 	 	 "description"		: 	"Get an object.",
 	 	 "hotkey"			: 	"get",
 	 	 "function"			: 	Character.add_to_inventory},
-	8: 	{"command_name"		: 	"drop",
+	9: 	{"command_name"		: 	"drop",
 	 	 "need_com_name"	:  	"no",
 	 	 "need_com_input"	:  	"yes",
 	 	 "description"		: 	"Drop an object.",
 	 	 "hotkey"			: 	"drop",
 	 	 "function"			: 	Character.remove_from_inventory},
-	9: 	{"command_name"		: 	"help",
+	10: 	{"command_name"		: 	"help",
 	 	 "need_com_name"	:  	"no",
 	 	 "need_com_input"	:  	"no",
 	 	 "description"		: 	"Display the the commands.",
 	 	 "hotkey"			: 	["h", "help"],
 	 	 "function"			: 	show_all_commands},
-	10:	{"command_name"		: 	"load",
+	11:	{"command_name"		: 	"load",
 	 	 "need_com_name"	:  	"no",
 	 	 "need_com_input"	:  	"yes",
 	 	 "description"		: 	"Insert the appropriate ammo or object for this item.",
 	 	 "hotkey"			: 	"load",
 	 	 "function"			: 	Weapon.load_weapon},
+	12:	{"command_name"		: 	"go",
+	 	 "need_com_name"	:  	"no",
+	 	 "need_com_input"	:  	"yes",
+	 	 "description"		: 	"Enter a building, ship, or other object.",
+	 	 "hotkey"			: 	"go",
+	 	 "function"			: 	EnterObject},
 }

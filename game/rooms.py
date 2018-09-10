@@ -19,7 +19,20 @@ class Room():
 
 		# print(Ammo.description)
 		# print(Ammo9mm)
+class Ship(Room):
+	def __init__(self, size, engine, sensors, storage, doors):
+		self.size = size
+		self.engine = engine
+		self.sensors = sensors
+		self.storage = storage
+		self.doors = doors
 
+class Cutlass(Ship):
+	def __init__(self):
+		pass
+	super.__init__(name="cutlass",
+				   description="A simple console stands before the pilot seat.",
+				   exits="out")
 
 compass = ["n", "e", "s", "w", "north", "east", "south", "west"]
 
@@ -40,4 +53,12 @@ rooms = {
 	    "desc"  :  "This is the fourth room.", 
 	    "exits" :  {"west": 2},
 	    "items" :  []},
+}
+
+ships = {
+	1: {"ship_class"	:	"Cutlass",
+		"name"  		:	"Cutlass | Bridge", 
+		"desc"  		:	"You see the captain's chair and a console.", 
+		"exits" 		:	{"out": []},
+		"items" 		:	[items[1], apple]},
 }

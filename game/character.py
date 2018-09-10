@@ -90,15 +90,20 @@ class Character():
 
 	def display_inventory(self):
 
+		final_inv = []
 		for item in self.inventory:
 			if self.inventory[item]["contents"] == []:
 				pass
 			else:
+				final_inv.append(item)
 				print("You have", end="")
 				print(" {} {} {}".format(", ".join(converted_contents(self.inventory[item]["contents"])),
 																	 self.inventory[item]["display"], 
 																	 self.inventory[item]["name"]), end="")
 				print(".", end=" ")
+		
+		if final_inv == []:
+			print("You have nothing.")
 
 	def navigate(self, command_name):
 		if command_name in self.current_room["exits"]:
@@ -106,3 +111,6 @@ class Character():
 			Room.room_description(self)
 		else:
 			print (f"You can't go {command_name}.")
+
+	def EnterObject(self, command_input, second_input):
+		
