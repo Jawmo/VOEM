@@ -27,12 +27,12 @@ class Ship(Room):
 		self.storage = storage
 		self.doors = doors
 
-class Cutlass(Ship):
-	def __init__(self):
-		pass
-	super.__init__(name="cutlass",
-				   description="A simple console stands before the pilot seat.",
-				   exits="out")
+# class Cutlass(Ship):
+# 	def __init__(self):
+# 		pass
+# 	super.__init__(name="cutlass",
+# 				   description="A simple console stands before the pilot seat.",
+# 				   exits="out")
 
 compass = ["n", "e", "s", "w", "north", "east", "south", "west"]
 
@@ -60,5 +60,5 @@ ships = {
 		"name"  		:	"Cutlass | Bridge", 
 		"desc"  		:	"You see the captain's chair and a console.", 
 		"exits" 		:	{"out": []},
-		"items" 		:	[items[1], apple]},
+		"items" 		:	[items[1], "apple"]},
 }
