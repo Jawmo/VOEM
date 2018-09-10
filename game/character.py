@@ -113,4 +113,4 @@ class Character():
 			print (f"You can't go {command_name}.")
 
 	def EnterObject(self, command_input, second_input):
-		
+		pass
