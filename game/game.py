@@ -35,7 +35,10 @@ def play():
 				else:
 					all_commands[i]["function"](hero)
 				break
-		
+
+		if command_input not in all_commands[i]["hotkey"]:
+			print("Unknown command.")
+
 		# print(f"\nUnknown command: \"{command_input}\" ")
 
 
